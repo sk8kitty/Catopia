@@ -33,15 +33,20 @@ namespace Catopia.Models
         public string Gender { get; set; }
 
         /// <summary>
-        /// Health conditions/needs of cat
+        /// Health conditions/needs of cat - NULLABLE
         /// </summary>
-        public string HealthNotes { get; set; }
+        public string? HealthNotes { get; set; }
 
         /// <summary>
-        /// General description of cat personality and likes/dislikes
+        /// General description of cat personality
         /// </summary>
         [Required]
         public string AdoptionDescription { get; set; }
+
+        /// <summary>
+        /// More depthy description of cat behavior/likes/dislikes - NULLABLE
+        /// </summary>
+        public string? ExtendedDescription { get; set; }
 
         /// <summary>
         /// Whether or not the cat has been adopted
