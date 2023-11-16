@@ -1,0 +1,29 @@
+﻿@model List<Cat>
+
+@{
+    ViewBag.Title = "Adoptable Cats";
+}
+
+<h1>Adoptable Cats</h1>
+<h4>These kitties are looking for forever homes. Please read about each cat's needs before applying for them!</h4>
+<br />
+
+<div class="container">
+    <div class="row">
+        @foreach (var cat in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card" style="height: 400px;">
+                    <img src="@cat.ImageURL" class="card-img-top" alt="@cat.Name" style="height: 220px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@cat.Name</h5>
+                        <p class="card-text"><strong>@cat.Age - @cat.Gender</strong></p>
+                        <p class="card-text">@cat.AdoptionDescription</p>
+                        <a asp-action="Details" asp-route-id="@cat.Id" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
