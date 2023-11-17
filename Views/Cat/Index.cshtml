@@ -4,8 +4,18 @@
     ViewBag.Title = "Adoptable Cats";
 }
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <h1>Adoptable Cats</h1>
-<h4>These kitties are looking for forever homes. Please read about each cat's needs before applying for them!</h4>
+<p><strong>These kitties are looking for forever homes. Please read about each cat's needs before applying for them!</strong></p>
+<a asp-action="Create" class="btn btn-primary">Create</a>
+<br />
 <br />
 
 <div class="container">
@@ -17,8 +27,8 @@
                     <img src="@cat.ImageURL" class="card-img-top" alt="@cat.Name" style="height: 220px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">@cat.Name</h5>
-                        <p class="card-text"><strong>@cat.Age - @cat.Gender</strong></p>
-                        <p class="card-text">@cat.AdoptionDescription</p>
+                        <p class="card-text"><strong>@cat.GetAge() - @cat.Gender</strong></p>
+                        <p class="card-text">@cat.BriefDescription</p>
                         <a asp-action="Details" asp-route-id="@cat.Id" class="btn btn-primary">Details</a>
                     </div>
                 </div>

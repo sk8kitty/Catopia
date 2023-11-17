@@ -20,11 +20,10 @@ namespace Catopia.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Age of cat in months or years
-        /// String because the number is not used for any math function &  it's just easier
+        /// Date cat was born
         /// </summary>
         [Required]
-        public string Age { get; set; }
+        public DateTime Birthdate { get; set; }
 
         /// <summary>
         /// Gender of cat
@@ -38,13 +37,15 @@ namespace Catopia.Models
         public string? HealthNotes { get; set; }
 
         /// <summary>
-        /// General description of cat personality
+        /// General desc of cat personality
+        /// Displays on 'card' panels in the adoption listings
         /// </summary>
         [Required]
-        public string AdoptionDescription { get; set; }
+        public string BriefDescription { get; set; }
 
         /// <summary>
-        /// More depthy description of cat behavior/likes/dislikes - NULLABLE
+        /// Depthy desc of cat behavior/likes/dislikes - NULLABLE
+        /// Displays in the details page of the given cat
         /// </summary>
         public string? ExtendedDescription { get; set; }
 
@@ -59,5 +60,27 @@ namespace Catopia.Models
         /// </summary>
         [Required]
         public string ImageURL { get; set; }
+
+
+        /// <summary>
+        /// Calculates the age of a cat based on birthday.
+        /// Will return months if cat is less than 1 year old,
+        /// and years if cat is greater than or equal to 1 year old.
+        /// </summary>
+        public string GetAge()
+        {
+            // cat's age in months
+            int months = (DateTime.Now.Year - Birthdate.Year) * 12 + DateTime.Now.Month - Birthdate.Month;
+            int years = months / 12;
+
+            if (months < 12)
+            {
+                return $"{months} {(months == 1 ? "month" : "months")}";
+            }
+            else
+            {
+                return $"{years} {(years == 1 ? "year" : "years")}";
+            }
+        }
     }
 }
