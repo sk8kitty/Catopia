@@ -15,7 +15,7 @@
 
             <div class="col-md-8">
                 <h3>@Model.Name</h3>
-                <p><strong>@Model.Age</strong> - @Model.Gender</p>
+                <p><strong>@Model.GetAge() - @Model.Gender</strong></p>
 
                 @if (!string.IsNullOrWhiteSpace(Model.ExtendedDescription))
                 {
