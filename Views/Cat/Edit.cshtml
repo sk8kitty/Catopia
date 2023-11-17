@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label asp-for="Name" class="control-label"><strong>Name</strong></label>
                 <span asp-validation-for="Name" class="text-danger"></span>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" placeholder="Bundy" />
             </div>
 
             <div class="form-group">
@@ -39,18 +39,18 @@
 
             <div class="form-group">
                 <label asp-for="ExtendedDescription" class="control-label"><strong>Extended Description</strong></label>
-                <textarea asp-for="ExtendedDescription" class="form-control" rows="4" placeholder="A 9-year-old ragdoll who has spent most of his time with children, Bundy is a great fit for a family home. He was unfortunately turned over to the shelter upon financial crisis, and is still quite unsure about all of the sudden, new surroundings because he is older. He will warm up to you over time and show you love; his previous family said he was shy but loving with people. He is used to other cats, and ignores most dogs."></textarea>
+                <textarea asp-for="ExtendedDescription" class="form-control" rows="4" placeholder="A 9-year-old ragdoll who has spent most of his time with children, Bundy is a great fit for a family home. His previous family said he was shy but loving with people and that he is used to other cats, but avoids most dogs..."></textarea>
             </div>
 
             <div class="form-group">
                 <label asp-for="HealthNotes" class="control-label"><strong>Health Notes</strong></label>
-                <input asp-for="HealthNotes" class="form-control" />
+                <input asp-for="HealthNotes" class="form-control" placeholder="Left eye cataract." />
             </div>
 
             <div class="form-group" style="margin-bottom: 1em;">
                 <label asp-for="ImageURL" class="control-label"><strong>Image URL (.jpeg, .png, or .webp)</strong></label>
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
-                <input asp-for="ImageURL" class="form-control" />
+                <input asp-for="ImageURL" class="form-control" placeholder="https://i.imgur.com/yourcatpic.jpeg"  />
             </div>
 
             <div class="form-group text-center">

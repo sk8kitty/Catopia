@@ -48,7 +48,6 @@ namespace Catopia.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"{c.Name} is now up for adoption!";
-
                 return RedirectToAction("Index");
             }
 
@@ -78,11 +77,41 @@ namespace Catopia.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"{c.Name} was updated successfully!";
-
                 return RedirectToAction("Index");
             }
 
             return View(c);
+        }
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            Cat? catToDelete = await _context.Cats.FindAsync(id);
+
+            if (catToDelete == null)
+            {
+                return NotFound();
+            }
+
+            return View(catToDelete);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            Cat? catToDelete = await _context.Cats.FindAsync(id);
+
+            if (catToDelete != null)
+            {
+                _context.Cats.Remove(catToDelete);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"{catToDelete.Name}'s listing was deleted successfully!";
+                return RedirectToAction("Index");
+            }
+
+            TempData["Message"] = "This listing was already deleted.";
+            return RedirectToAction("Index");
         }
     }
 }
