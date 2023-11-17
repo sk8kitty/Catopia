@@ -18,5 +18,16 @@ namespace Catopia.Controllers
             List<Cat> cats = _context.Cats.ToList();
             return View(cats);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            Cat? catDetails = await _context.Cats.FindAsync(id);
+            if (catDetails == null)
+            {
+                return NotFound();
+            }
+
+            return View(catDetails);
+        }
     }
 }
