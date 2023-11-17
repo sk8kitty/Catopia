@@ -14,8 +14,8 @@
             </div>
 
             <div class="col-md-8">
-                <h3>@Model.Name</h3>
-                <p><strong>@Model.GetAge() - @Model.Gender</strong></p>
+                <h3><strong>@Model.Name</strong></h3>
+                <p><strong>@Model.GetAge() - @Model.Gender - @Model.BriefDescription</strong></p>
 
                 @if (!string.IsNullOrWhiteSpace(Model.ExtendedDescription))
                 {
@@ -23,11 +23,15 @@
                     <p>@Model.ExtendedDescription</p>
                 }
 
-                <h4>Health Notes</h4>
-                <p>@Model.HealthNotes</p>
+                @if (!string.IsNullOrWhiteSpace(Model.HealthNotes))
+                {
+                    <h4>Health Notes</h4>
+                    <p>@Model.HealthNotes</p>
+                }
 
-                <h4>Adoption Status</h4>
-                <p>@(Model.AdoptionStatus ? "Adopted" : "Available for Adoption")</p>
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="padding: 0.1em, 0.1em, 0.1em">
+                    <p>@(Model.AdoptionStatus ? "Adopted!" : "Available for adoption!")</p>
+                </div>
             </div>
 
         </div>
@@ -38,8 +42,8 @@
                 <a asp-action="Index" class="btn btn-secondary">Back</a>
             </div>
             <div>
-                <a asp-action="Edit" class="btn btn-primary">Edit</a>
-                <a asp-action="Delete" class="btn btn-danger">Delete</a>
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>

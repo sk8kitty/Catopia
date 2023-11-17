@@ -29,5 +29,28 @@ namespace Catopia.Controllers
 
             return View(catDetails);
         }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Cat c)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Cats.Add(c);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"{c.Name} is now up for adoption!";
+
+                return RedirectToAction("Index");
+            }
+
+            return View(c);
+        }
     }
 }
