@@ -5,12 +5,12 @@
 }
 
 <div class="container mt-4">
-    <h2>$"{Model.Name}'s Details"</h2>
+    <h2>@ViewBag.Title</h2>
 
     <div class="card p-3 shadow">
         <div class="row">
             <div class="col-md-4">
-                <img src="@Model.ImageURL" class="img-fluid" alt="@Model.Name">
+                <img src="@Model.ImageURL" class="img-fluid" alt="@Model.Name" style="max-width: 80%">
             </div>
 
             <div class="col-md-8">
@@ -29,11 +29,14 @@
                 <h4>Adoption Status</h4>
                 <p>@(Model.AdoptionStatus ? "Adopted" : "Available for Adoption")</p>
             </div>
+
         </div>
 
         <div class="mt-4 d-flex justify-content-between align-items-end">
-            <a asp-action="Adopt" class="btn btn-success">Apply to Adopt</a>
-            <a asp-action="Index" class="btn btn-secondary">Back</a>
+            <div>
+                <a asp-action="Adopt" class="btn btn-success">Apply to Adopt</a>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
             <div>
                 <a asp-action="Edit" class="btn btn-primary">Edit</a>
                 <a asp-action="Delete" class="btn btn-danger">Delete</a>
