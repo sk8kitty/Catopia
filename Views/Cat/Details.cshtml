@@ -1,0 +1,39 @@
+﻿@model Cat
+
+@{
+    ViewBag.Title = $"{Model.Name}'s Details";
+}
+
+<div class="container mt-4">
+    <h2>$"{Model.Name}'s Details"</h2>
+
+    <div class="card p-3 shadow">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="@Model.ImageURL" class="img-fluid" alt="@Model.Name">
+            </div>
+
+            <div class="col-md-8">
+                <h3>@Model.Name</h3>
+                <p><strong>@Model.Age</strong> - @Model.Gender</p>
+
+                @if (!string.IsNullOrWhiteSpace(Model.ExtendedDescription))
+                {
+                    <h4>Description</h4>
+                    <p>@Model.ExtendedDescription</p>
+                }
+
+                <h4>Health Notes</h4>
+                <p>@Model.HealthNotes</p>
+
+                <h4>Adoption Status</h4>
+                <p>@(Model.AdoptionStatus ? "Adopted" : "Available for Adoption")</p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="#" class="btn btn-success">Apply to Adopt</a>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
