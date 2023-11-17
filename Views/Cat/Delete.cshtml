@@ -1,0 +1,29 @@
+﻿@model Cat
+
+<h2 class="text-center">Delete Listing</h2>
+<p class="text-center"><strong>Are you sure? You won't be able to undo this action.</strong></p>
+
+<div class="container mt-4">
+    <div class="card p-3 shadow" style="max-width: 500px; margin: auto;">
+        <div class="card mb-3">
+            <img src="@Model.ImageURL" class="card-img-top" alt="@Model.Name">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">
+                    <strong>Age:</strong> @Model.GetAge()<br />
+                    <strong>Gender:</strong> @Model.Gender<br />
+                    <strong>Description:</strong> @Model.BriefDescription
+                </p>
+            </div>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
