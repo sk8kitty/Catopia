@@ -13,11 +13,13 @@ namespace Catopia.Controllers
             _context = context;
         }
 
+
         public IActionResult Index()
         {
             List<Cat> cats = _context.Cats.ToList();
             return View(cats);
         }
+
 
         public async Task<IActionResult> Details(int id)
         {
@@ -46,6 +48,36 @@ namespace Catopia.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"{c.Name} is now up for adoption!";
+
+                return RedirectToAction("Index");
+            }
+
+            return View(c);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            Cat? catToEdit = await _context.Cats.FindAsync(id);
+
+            if (catToEdit == null)
+            {
+                return NotFound();
+            }
+
+            return View(catToEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Cat c)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Cats.Update(c);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"{c.Name} was updated successfully!";
 
                 return RedirectToAction("Index");
             }
