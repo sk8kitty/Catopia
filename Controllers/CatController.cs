@@ -113,5 +113,25 @@ namespace Catopia.Controllers
             TempData["Message"] = "This listing was already deleted.";
             return RedirectToAction("Index");
         }
+
+
+        
+        public async Task<IActionResult> AdoptionApp(int id)
+        {
+            Cat? catToAdopt = await _context.Cats.FindAsync(id);
+            if (catToAdopt == null)
+            {
+                return NotFound();
+            }
+
+            return View(catToAdopt);
+        }
+
+        [HttpPost]
+        public IActionResult AdoptionApp()
+        {
+            TempData["Message"] = $"Your application was submitted successfully!";
+            return RedirectToAction("Index");
+        }
     }
 }
