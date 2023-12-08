@@ -1,4 +1,5 @@
 using Catopia.Data;
+using Catopia.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,9 @@ builder.Services.AddDbContext<CatContext>(options => options.UseSqlServer(builde
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -38,5 +41,16 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+
+// service provider setup
+IServiceScope provider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
+
+// create default roles
+await IdentityHelper.CreateRoles(provider.ServiceProvider, IdentityHelper.Admin, IdentityHelper.Client);
+
+// create default admin
+await IdentityHelper.CreateDefaultAdmin(provider.ServiceProvider, IdentityHelper.Admin);
+
 
 app.Run();
