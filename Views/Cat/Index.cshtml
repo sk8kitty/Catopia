@@ -14,7 +14,11 @@
 
 <h1>Adoptable Cats</h1>
 <p><strong>These kitties are looking for forever homes. Please read about each cat's needs before applying for them!</strong></p>
-<a asp-action="Create" class="btn btn-primary">Create</a>
+
+@if (User.IsInRole("admin"))
+{
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+}
 <br />
 <br />
 
