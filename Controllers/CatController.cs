@@ -1,5 +1,6 @@
 ﻿using Catopia.Data;
 using Catopia.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catopia.Controllers
@@ -33,12 +34,14 @@ namespace Catopia.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Create(Cat c)
         {
@@ -55,6 +58,7 @@ namespace Catopia.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -68,6 +72,7 @@ namespace Catopia.Controllers
             return View(catToEdit);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(Cat c)
         {
@@ -84,6 +89,7 @@ namespace Catopia.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
             Cat? catToDelete = await _context.Cats.FindAsync(id);
@@ -96,6 +102,7 @@ namespace Catopia.Controllers
             return View(catToDelete);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
