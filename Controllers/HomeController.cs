@@ -1,5 +1,8 @@
-﻿using Catopia.Models;
+﻿using Catopia.Data;
+using Catopia.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Catopia.Controllers
@@ -7,11 +10,14 @@ namespace Catopia.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ArticleContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ArticleContext context)
         {
             _logger = logger;
+            _context = context;
         }
+
 
         public IActionResult Index()
         {
@@ -27,6 +33,31 @@ namespace Catopia.Controllers
         {
             return View();
         }
+
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public IActionResult CreateArticle()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<IActionResult> CreateArticle(Article a)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Articles.Add(a);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"'{a.Title}' has been posted!";
+                return RedirectToAction("Index");
+            }
+
+            return View(a);
+        }
+
 
         public IActionResult Privacy()
         {

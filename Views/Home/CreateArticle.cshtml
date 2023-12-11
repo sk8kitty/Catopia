@@ -1,0 +1,53 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Create an Article";
+}
+
+<div class="container mt-4">
+    <h2 style="text-align: center">@ViewBag.Title</h2>
+
+    <div class="card p-3 shadow" style="max-width: 500px; margin: auto;">
+        <form asp-action="CreateArticle" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ImageURL" class="control-label"><strong>Image URL</strong></label>
+                <span asp-validation-for="ImageURL" class="text-danger"></span>
+                <input asp-for="ImageURL" class="form-control" placeholder="https://i.imgur.com/yourpic.png" />
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Author" type="hidden" value="@User.Identity.Name" />
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Date" type="hidden" value="@DateTime.Now" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"><strong>Title</strong></label>
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <input asp-for="Title" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"><strong>Content</strong></label>
+                <span asp-validation-for="Content" class="text-danger"></span>
+                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
+            </div>
+
+            <br />
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
