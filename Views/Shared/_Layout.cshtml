@@ -25,7 +25,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="News">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Resources">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cat" asp-action="Index">Adopt</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -41,7 +50,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Catopia - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; <script>document.write(new Date().getFullYear())</script> - Catopia - <a asp-area="" asp-controller="Home" asp-action="About">About</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

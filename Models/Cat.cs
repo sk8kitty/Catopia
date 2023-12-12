@@ -16,19 +16,19 @@ namespace Catopia.Models
         /// <summary>
         /// Name of cat
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "The name is required.")]
         public string Name { get; set; }
 
         /// <summary>
         /// Date cat was born
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "The birthdate is required.")]
         public DateTime Birthdate { get; set; }
 
         /// <summary>
         /// Gender of cat
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "The gender is required.")]
         public string Gender { get; set; }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Catopia.Models
         /// General desc of cat personality
         /// Displays on 'card' panels in the adoption listings
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A short description is required.")]
         public string BriefDescription { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Catopia.Models
         /// <summary>
         /// Link to picture of the cat
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "The cat's picture is required.")]
         public string ImageURL { get; set; }
 
 
