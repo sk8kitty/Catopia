@@ -7,10 +7,10 @@ This website is being built by myself, Teddy Bushnell, for a project in my .NET 
 #### Planned Features:
 * Browse a catalog of cats available for adoption to find the purrfect companion.
 * View detailed information about each cat, including name, age, breed, personality, and any medical notes.
-* Fill out an adoption application online or contact the shelter with any inquiries.
-* Find resources on taking care of a cat (including ones with medical requirements).
+* Fill out an adoption application for a specific cat.
+* Find resources and educational information on taking care of a cat.
 * Learn about the shelter's mission and how to get involved or donate!
-* Admin account privileges such as modifying cat listings and managing adoption applications.
+* Admin account privileges such as modifying cat listings and creating news articles.
 <br />
 
 
@@ -18,7 +18,11 @@ This website is being built by myself, Teddy Bushnell, for a project in my .NET 
 To run this project locally, here's what you'll need:
 
 Latest version of [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)  
-Latest version of .NET 6.0   
+Latest version of .NET 6.0
+
+The admin role email & password info:
+webadmin@catopia.org
+CatScratch2#
 <br />
 
 
@@ -43,10 +47,13 @@ Any contributions to or other input about Catopia is appreciated! Community is w
 ### 11/15:
 Issues have been organized and project development is commencing!
 
-### 11/16:
-*More news soon to come...*
+### 12/11:
+Website completion! While I may play around with this at a later date, I have achieved the intended purpose of the website.
 <br />
 <br />
 
-## Homepage Preview
-*To be shared upon completion!*
+## Website Previews
+![image](https://github.com/sk8kitty/Catopia/assets/130592845/3dbee5b1-c08f-4d57-a84e-f899cf120444)
+![image](https://github.com/sk8kitty/Catopia/assets/130592845/582c8017-63e6-4db3-9112-fbf818be632e)
+![image](https://github.com/sk8kitty/Catopia/assets/130592845/44e67a61-793b-44f8-b879-26047ee0a46e)
+
