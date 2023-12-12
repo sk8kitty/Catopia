@@ -1,0 +1,45 @@
+﻿@model List<Article>
+
+@{
+    ViewData["Title"] = "News & Events";
+}
+
+<div class="container mt-4">
+    <h2 style="text-align: center">@ViewData["Title"]</h2>
+    <br />
+
+    <div class="mb-4">
+        <div class="card p-3 shadow" style="max-width: 1000px; margin: auto;">
+            <img src="@Model.First().ImageURL" class="img-fluid mx-auto d-block" alt="Article Image" style="width: 500px" />
+            <br />
+            <h5 style="text-align:center">@Model.First().Title</h5>
+            <p style="text-align:center">
+                <strong>@Model.First().Date.ToString("MM/dd/yyyy")</strong> <br />
+                <strong>@Model.First().Author</strong>
+            </p>
+            <p>@Model.First().Content</p>
+        </div>
+    </div>
+    <br />
+
+    <div>
+        <h4 style="text-align:center">Previous articles:</h4>
+        @foreach (var article in Model.Skip(1))
+        {
+            <div class="card mb-3 p-3 shadow" style="max-width: 800px; margin: auto;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@article.ImageURL" class="img-fluid" alt="Article Image" />
+                    </div>
+                    <div class="col-md-8">
+                        <h5>@article.Title</h5>
+                        <p><strong>@article.Date.ToString("MM/dd/yyyy")</strong> <br />
+                            <strong>@article.Author</strong> <br />
+                            @article.Content
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

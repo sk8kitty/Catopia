@@ -34,6 +34,14 @@ namespace Catopia.Controllers
             return View();
         }
 
+        public IActionResult News()
+        {
+            List<Article> articles = _context.Articles.ToList();
+            articles.Reverse(); // reverses their order, so the most recently submitted article is first
+
+            return View(articles);
+        }
+
 
         [Authorize(Roles = "admin")]
         [HttpGet]
