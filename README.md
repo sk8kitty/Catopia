@@ -20,8 +20,8 @@ To run this project locally, here's what you'll need:
 Latest version of [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)  
 Latest version of .NET 6.0
 
-The admin role email & password info:
-webadmin@catopia.org
+**Admin role email & password info:**   
+webadmin@catopia.org   
 CatScratch2#
 <br />
 
