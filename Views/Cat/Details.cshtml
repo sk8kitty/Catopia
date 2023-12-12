@@ -41,7 +41,7 @@
                 <a asp-action="AdoptionApp" asp-route-id="@Model.Id" class="btn btn-success">Apply to Adopt</a>
                 <a asp-action="Index" class="btn btn-secondary">Back</a>
             </div>
-            @if (User.IsInRole("Admin"))
+            @if (User.IsInRole("admin"))
             {
                 <div>
                     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
