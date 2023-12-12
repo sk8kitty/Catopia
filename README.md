@@ -1,7 +1,8 @@
 # Catopia
 ## Introduction
 Catopia is a feline refuge located in Washington with the primary goal of intaking, rehabilitating, and rehoming cats with nowhere to stay.   
-This website is being built by myself, Teddy Bushnell, for a project in my .NET web programming course at CPTC (FALL 2023).
+This website is being built by myself, Teddy Bushnell, for a project in my .NET web programming course at CPTC (FALL 2023).   
+[Here is the published version of the website.](https://catopia.azurewebsites.net/)
 <br />
 
 #### Planned Features:
@@ -15,8 +16,7 @@ This website is being built by myself, Teddy Bushnell, for a project in my .NET 
 
 
 ## Requirements
-To run this project locally, here's what you'll need:
-
+**To run this project locally, here's what you'll need:**
 Latest version of [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)  
 Latest version of .NET 6.0
 
