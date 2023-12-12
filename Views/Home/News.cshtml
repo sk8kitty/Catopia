@@ -14,6 +14,13 @@
 
 <div class="container mt-4">
     <h2 style="text-align: center">@ViewData["Title"]</h2>
+    @if (User.IsInRole("admin"))
+    {
+        <div style="text-align: center">
+            <a asp-action="CreateArticle" class="btn btn-primary">Create Article</a>
+        </div>
+        <br />
+    }
 
     <div class="mb-4">
         <div class="card p-3 shadow" style="max-width: 1000px; margin: auto;">
