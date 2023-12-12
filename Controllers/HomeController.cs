@@ -60,7 +60,7 @@ namespace Catopia.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"'{a.Title}' has been posted!";
-                return RedirectToAction("Index");
+                return RedirectToAction("News");
             }
 
             return View(a);
