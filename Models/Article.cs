@@ -16,6 +16,7 @@ namespace Catopia.Models
         /// <summary>
         /// Title of article
         /// </summary>
+        [Required(ErrorMessage = "The title is required.")]
         public string Title { get; set; }
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace Catopia.Models
         /// <summary>
         /// Content of article
         /// </summary>
+        [Required(ErrorMessage = "The content of the article is required.")]
         public string Content { get; set; }
 
         /// <summary>
@@ -36,6 +38,7 @@ namespace Catopia.Models
         /// <summary>
         /// Link to cover picture of article
         /// </summary>
+        [Required(ErrorMessage = "The cover picture of the article is required.")]
         public string ImageURL { get; set; }
     }
 }
